@@ -3,6 +3,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import pool from './db.js'
 import authRoutes from './routes/auth.js'
+import productosRoutes from './routes/productos.js'
 
 dotenv.config()
 
@@ -14,6 +15,7 @@ app.use(express.json())
 
 // Rutas
 app.use('/auth', authRoutes)
+app.use('/productos', productosRoutes)
 
 app.get('/', (req, res) => {
   res.json({ message: 'LuaStock API funcionando' })
