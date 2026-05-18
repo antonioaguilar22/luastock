@@ -39,13 +39,17 @@ export default function Productos() {
   )
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
+    <div className="min-h-screen p-4" style={{ backgroundColor: '#F5F0FF' }}>
       <div className="max-w-lg mx-auto">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-xl font-bold text-gray-800">Productos</h1>
+        <div className="px-4 py-4 flex items-center justify-between" style={{ backgroundColor: '#2D1B4E' }}>
+          <button onClick={() => navigate('/dashboard')} className="text-left hover:opacity-80 transition-opacity">
+            <h1 className="text-xl font-bold text-white tracking-wide">LuaStock</h1>
+            <p className="text-xs" style={{ color: '#C4B5E8' }}>Lua Skin Care</p>
+          </button>
           <button
             onClick={() => navigate('/productos/nuevo')}
-            className="bg-gray-800 text-white text-sm px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+            className="text-sm px-4 py-2 rounded-lg font-medium hover:opacity-80 transition-opacity"
+            style={{ backgroundColor: '#C4B5E8', color: '#2D1B4E' }}
           >
             + Agregar
           </button>
@@ -72,13 +76,13 @@ export default function Productos() {
                 <div className="flex gap-2 mt-3">
                   <button
                     onClick={() => navigate(`/productos/editar/${producto.id}`)}
-                    className="flex-1 text-sm border border-gray-300 rounded-lg py-1 hover:bg-gray-50 transition-colors"
+                    className="flex-1 text-sm bg-gray-800 text-white rounded-lg py-2 hover:bg-gray-700 transition-colors font-medium"
                   >
                     Editar
                   </button>
                   <button
                     onClick={() => handleDelete(producto.id)}
-                    className="flex-1 text-sm border border-red-200 text-red-500 rounded-lg py-1 hover:bg-red-50 transition-colors"
+                    className="flex-1 text-sm bg-red-500 text-white rounded-lg py-2 hover:bg-red-600 transition-colors font-medium"
                   >
                     Eliminar
                   </button>

@@ -75,18 +75,21 @@ export default function ProductoForm() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
+
+    <div className="min-h-screen p-4" style={{ backgroundColor: '#F5F0FF' }}>
       <div className="max-w-lg mx-auto">
-        <div className="flex items-center gap-3 mb-6">
+        <div className="px-4 py-4 flex items-center justify-between mb-6" style={{ backgroundColor: '#2D1B4E' }}>
+          <button onClick={() => navigate('/dashboard')} className="text-left hover:opacity-80 transition-opacity">
+            <h1 className="text-xl font-bold text-white tracking-wide">LuaStock</h1>
+            <p className="text-xs" style={{ color: '#C4B5E8' }}>Lua Skin Care</p>
+          </button>
           <button
             onClick={() => navigate('/productos')}
-            className="text-gray-500 hover:text-gray-800"
+            className="text-3xl font-bold hover:opacity-80 transition-opacity leading-none"
+            style={{ color: '#C4B5E8' }}
           >
             ←
           </button>
-          <h1 className="text-xl font-bold text-gray-800">
-            {isEditing ? 'Editar producto' : 'Nuevo producto'}
-          </h1>
         </div>
 
         <div className="bg-white rounded-xl shadow-sm p-6 space-y-4">
