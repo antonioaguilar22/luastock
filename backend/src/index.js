@@ -5,6 +5,7 @@ import pool from './db.js'
 import authRoutes from './routes/auth.js'
 import productosRoutes from './routes/productos.js'
 import dashboardRoutes from './routes/dashboard.js'
+import movimientosRoutes from './routes/movimientos.js'
 
 dotenv.config()
 
@@ -18,6 +19,7 @@ app.use(express.json())
 app.use('/dashboard', dashboardRoutes)
 app.use('/auth', authRoutes)
 app.use('/productos', productosRoutes)
+app.use('/movimientos', movimientosRoutes)
 
 app.get('/', (req, res) => {
   res.json({ message: 'LuaStock API funcionando' })

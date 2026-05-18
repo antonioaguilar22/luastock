@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import Productos from './pages/Productos'
 import ProductoForm from './pages/ProductoForm'
 import Dashboard from './pages/Dashboard'
+import MovimientoForm from './pages/MovimientoForm'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/productos/nuevo" element={<ProductoForm />} />
         <Route path="/productos/editar/:id" element={<ProductoForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/movimientos/nuevo" element={<MovimientoForm />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
