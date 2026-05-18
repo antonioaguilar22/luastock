@@ -6,6 +6,7 @@ import authRoutes from './routes/auth.js'
 import productosRoutes from './routes/productos.js'
 import dashboardRoutes from './routes/dashboard.js'
 import movimientosRoutes from './routes/movimientos.js'
+import reportesRoutes from './routes/reportes.js'
 
 dotenv.config()
 
@@ -20,6 +21,7 @@ app.use('/dashboard', dashboardRoutes)
 app.use('/auth', authRoutes)
 app.use('/productos', productosRoutes)
 app.use('/movimientos', movimientosRoutes)
+app.use('/reportes', reportesRoutes)
 
 app.get('/', (req, res) => {
   res.json({ message: 'LuaStock API funcionando' })
