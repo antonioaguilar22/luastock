@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import pool from './db.js'
 import authRoutes from './routes/auth.js'
 import productosRoutes from './routes/productos.js'
+import dashboardRoutes from './routes/dashboard.js'
 
 dotenv.config()
 
@@ -14,6 +15,7 @@ app.use(cors())
 app.use(express.json())
 
 // Rutas
+app.use('/dashboard', dashboardRoutes)
 app.use('/auth', authRoutes)
 app.use('/productos', productosRoutes)
 
