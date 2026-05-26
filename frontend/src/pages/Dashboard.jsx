@@ -1,3 +1,4 @@
+import { Package, ArrowLeftRight, BarChart2, AlertTriangle, Hand } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../services/api'
@@ -58,7 +59,8 @@ export default function Dashboard() {
 
         {/* Saludo */}
         <p className="text-sm font-medium" style={{ color: '#2D1B4E' }}>
-          ¡Hola, {user.nombre}! 👋
+          <Hand size={16} className="inline mr-1" color="#2D1B4E" />
+          ¡Hola, {user.nombre}!
         </p>
 
         {/* Métricas */}
@@ -67,14 +69,12 @@ export default function Dashboard() {
             <p className="text-2xl font-bold" style={{ color: '#2D1B4E' }}>{data.total_productos}</p>
             <p className="text-xs text-gray-500 mt-1">Productos</p>
           </div>
-          <div className={`rounded-xl shadow-sm p-3 text-center border ${
-            data.total_stock_bajo > 0
-              ? 'bg-red-50 border-red-200'
-              : 'bg-white border-purple-100'
-          }`}>
-            <p className={`text-2xl font-bold ${
-              data.total_stock_bajo > 0 ? 'text-red-500' : ''
-            }`} style={data.total_stock_bajo === 0 ? { color: '#2D1B4E' } : {}}>
+          <div className={`rounded-xl shadow-sm p-3 text-center border ${data.total_stock_bajo > 0
+            ? 'bg-red-50 border-red-200'
+            : 'bg-white border-purple-100'
+            }`}>
+            <p className={`text-2xl font-bold ${data.total_stock_bajo > 0 ? 'text-red-500' : ''
+              }`} style={data.total_stock_bajo === 0 ? { color: '#2D1B4E' } : {}}>
               {data.total_stock_bajo}
             </p>
             <p className="text-xs text-gray-500 mt-1">Stock bajo</p>
@@ -89,7 +89,7 @@ export default function Dashboard() {
         {data.productos_stock_bajo.length > 0 && (
           <div className="bg-white rounded-xl shadow-sm p-4 border border-red-100">
             <div className="flex items-center gap-2 mb-3">
-              <span>⚠️</span>
+              <AlertTriangle size={18} color="#DC2626" />
               <h2 className="font-semibold text-sm text-red-600">Alertas de stock bajo</h2>
             </div>
             <div className="space-y-2">
@@ -109,7 +109,7 @@ export default function Dashboard() {
             onClick={() => navigate('/productos')}
             className="bg-white rounded-xl shadow-sm p-4 text-left hover:opacity-90 transition-opacity border border-purple-100"
           >
-            <p className="text-2xl mb-1">📦</p>
+            <Package size={28} color="#2D1B4E" className="mb-1" />
             <p className="font-semibold text-sm" style={{ color: '#2D1B4E' }}>Inventario</p>
             <p className="text-xs text-gray-500">Ver productos</p>
           </button>
@@ -117,7 +117,7 @@ export default function Dashboard() {
             onClick={() => navigate('/movimientos/nuevo')}
             className="bg-white rounded-xl shadow-sm p-4 text-left hover:opacity-90 transition-opacity border border-purple-100"
           >
-            <p className="text-2xl mb-1">📝</p>
+            <ArrowLeftRight size={28} color="#2D1B4E" className="mb-1" />
             <p className="font-semibold text-sm" style={{ color: '#2D1B4E' }}>Movimiento</p>
             <p className="text-xs text-gray-500">Registrar entrada/salida</p>
           </button>
@@ -125,7 +125,7 @@ export default function Dashboard() {
             onClick={() => navigate('/reportes')}
             className="bg-white rounded-xl shadow-sm p-4 text-left hover:opacity-90 transition-opacity border border-purple-100 col-span-2"
           >
-            <p className="text-2xl mb-1">📊</p>
+            <BarChart2 size={28} color="#2D1B4E" className="mb-1" />
             <p className="font-semibold text-sm" style={{ color: '#2D1B4E' }}>Reportes</p>
             <p className="text-xs text-gray-500">Ver historial de movimientos</p>
           </button>
