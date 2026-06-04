@@ -40,6 +40,9 @@ export default function Productos() {
 
   return (
     <div className="min-h-screen p-4" style={{ backgroundColor: '#F5F0FF' }}>
+      <div className="max-w-lg mx-auto px-4 pt-4 pb-2">
+        <p className="text-sm font-semibold" style={{ color: '#2D1B4E' }}>Catálogo de productos</p>
+      </div>
       <div className="max-w-lg mx-auto">
         <div className="px-4 py-4 flex items-center justify-between" style={{ backgroundColor: '#2D1B4E' }}>
           <button onClick={() => navigate('/dashboard')} className="text-left hover:opacity-80 transition-opacity">
@@ -60,23 +63,30 @@ export default function Productos() {
         ) : (
           <div className="space-y-3">
             {productos.map(producto => (
-              <div key={producto.id} className="bg-white rounded-xl shadow-sm p-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h2 className="font-medium text-gray-800">{producto.nombre}</h2>
-                    <p className="text-sm text-gray-500">{producto.descripcion}</p>
+              <div key={producto.id} className="bg-white rounded-xl shadow-sm p-4 border border-purple-100">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex-1 mr-3">
+                    <h2 className="font-semibold text-sm" style={{ color: '#2D1B4E' }}>{producto.nombre}</h2>
+                    {producto.descripcion && (
+                      <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">{producto.descripcion}</p>
+                    )}
                   </div>
                   <div className="text-right">
-                    <span className={`text-lg font-bold ${producto.stock <= producto.stock_minimo ? 'text-red-500' : 'text-gray-800'}`}>
+                    <span className={`text-xl font-bold ${producto.stock <= producto.stock_minimo ? 'text-red-500' : ''
+                      }`} style={producto.stock > producto.stock_minimo ? { color: '#2D1B4E' } : {}}>
                       {producto.stock}
                     </span>
-                    <p className="text-xs text-gray-400">unidades</p>
+                    <p className="text-xs text-gray-400">uds.</p>
+                    {producto.stock <= producto.stock_minimo && (
+                      <p className="text-xs text-red-400 font-medium">Stock bajo</p>
+                    )}
                   </div>
                 </div>
-                <div className="flex gap-2 mt-3">
+                <div className="flex gap-2">
                   <button
                     onClick={() => navigate(`/productos/editar/${producto.id}`)}
-                    className="flex-1 text-sm bg-gray-800 text-white rounded-lg py-2 hover:bg-gray-700 transition-colors font-medium"
+                    className="flex-1 text-sm text-white rounded-lg py-2 hover:opacity-90 transition-opacity font-medium"
+                    style={{ backgroundColor: '#2D1B4E' }}
                   >
                     Editar
                   </button>

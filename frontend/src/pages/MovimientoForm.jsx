@@ -47,7 +47,7 @@ export default function MovimientoForm() {
                 cantidad: parseInt(form.cantidad),
                 nota: form.nota
             })
-            navigate('/dashboard')
+            navigate('/dashboard', { state: { mensaje: 'Movimiento registrado correctamente' } })
         } catch (err) {
             setError(err.response?.data?.message || 'Error al registrar movimiento')
         } finally {

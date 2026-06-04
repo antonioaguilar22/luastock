@@ -2,11 +2,14 @@ import { Package, ArrowLeftRight, BarChart2, AlertTriangle, Hand } from 'lucide-
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../services/api'
+import { useLocation } from 'react-router-dom'
 
 export default function Dashboard() {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const navigate = useNavigate()
+  const location = useLocation()
+  const mensaje = location.state?.mensaje
 
   useEffect(() => {
     cargarDashboard()
@@ -61,6 +64,11 @@ export default function Dashboard() {
         <p className="text-sm font-medium" style={{ color: '#2D1B4E' }}>
           <Hand size={16} className="inline mr-1" color="#2D1B4E" />
           ¡Hola, {user.nombre}!
+          {mensaje && (
+            <div className="bg-green-50 border border-green-200 text-green-700 text-sm rounded-lg px-4 py-3">
+              ✓ {mensaje}
+            </div>
+          )}
         </p>
 
         {/* Métricas */}
