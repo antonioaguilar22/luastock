@@ -8,6 +8,7 @@ import ProductoForm from './pages/ProductoForm'
 import Dashboard from './pages/Dashboard'
 import MovimientoForm from './pages/MovimientoForm'
 import Reportes from './pages/Reportes'
+import PrivateRoute from './components/PrivateRoute'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -15,12 +16,12 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/productos" element={<Productos />} />
-        <Route path="/productos/nuevo" element={<ProductoForm />} />
-        <Route path="/productos/editar/:id" element={<ProductoForm />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/movimientos/nuevo" element={<MovimientoForm />} />
-        <Route path="/reportes" element={<Reportes />} />
+        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route path="/productos" element={<PrivateRoute><Productos /></PrivateRoute>} />
+        <Route path="/productos/nuevo" element={<PrivateRoute><ProductoForm /></PrivateRoute>} />
+        <Route path="/productos/editar/:id" element={<PrivateRoute><ProductoForm /></PrivateRoute>} />
+        <Route path="/movimientos/nuevo" element={<PrivateRoute><MovimientoForm /></PrivateRoute>} />
+        <Route path="/reportes" element={<PrivateRoute><Reportes /></PrivateRoute>} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
